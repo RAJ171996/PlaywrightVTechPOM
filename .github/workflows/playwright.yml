@@ -40,6 +40,19 @@ jobs:
         path: playwright-report/
         retention-days: 30
 
+    # SUCCESS NOTIFICATION
+    - name: Slack Notification Success
+      if: success()
+      run: |
+        REPORT_URL="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+
+        curl -X POST -H 'Content-type: application/json' \
+        --data "{
+          \"text\": \"✅ Playwright Tests Passed\nRepository: ${{ github.repository }}\nBranch: ${{ github.ref_name }}\nTriggered By: ${{ github.actor }}\nReport: ${REPORT_URL}\"
+        }" \
+        ${{ secrets.SLACK_WEBHOOK_URL }}
+
+    # FAILURE NOTIFICATION
     - name: Slack Notification Failure
       if: failure()
       run: |

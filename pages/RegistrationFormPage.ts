@@ -41,7 +41,7 @@ export class RegistrationFormPage {
         this.mobileNumberField = page.getByRole('textbox', { name: 'Mobile Number' });
         this.enterYourQueryField = page.getByRole('textbox', { name: 'Enter your query' });
         this.getExampleText = page.getByText('Example: 33');
-        this.exampleFiel = page.getByRole('textbox', { name: 'Please enter two digits as' });
+        this.exampleField = page.getByRole('textbox', { name: 'Please enter two digits as' });
         this.submitButton = page.getByRole('button', { name: 'Submit' });
 
     }

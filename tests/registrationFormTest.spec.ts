@@ -13,13 +13,9 @@ test('Registration Form Test', async ({
 
   await homePage.navigateToRegistrationForm();
 
-  await registrationFormPage.enterFirstName(
-    user.firstName
-  );
+  await registrationFormPage.enterFirstName(user.firstName);
 
-  await registrationFormPage.enterLastName(
-    user.lastName
-  );
+  await registrationFormPage.enterLastName(user.lastName);
 
   if (user.gender === 'Male') {
     await registrationFormPage.selectGenderMale();
@@ -27,33 +23,19 @@ test('Registration Form Test', async ({
 
   await registrationFormPage.selectCourseInterested();
 
-  await registrationFormPage.enterStreetAddress(
-    user.streetAddress
-  );
+  await registrationFormPage.enterStreetAddress(user.streetAddress);
 
-  await registrationFormPage.enterApartment(
-    user.apartment
-  );
+  await registrationFormPage.enterApartment(user.apartment);
 
-  await registrationFormPage.enterCity(
-    user.city
-  );
+  await registrationFormPage.enterCity(user.city);
 
-  await registrationFormPage.enterPostalCode(
-    user.postalCode
-  );
+  await registrationFormPage.enterPostalCode(user.postalCode);
 
-  await registrationFormPage.enterState(
-    user.state
-  );
+  await registrationFormPage.enterState(user.state);
 
-  await registrationFormPage.selectCountry(
-    user.country
-  );
+  await registrationFormPage.selectCountry(user.country);
 
-  await registrationFormPage.enterEmail(
-    user.email
-  );
+  await registrationFormPage.enterEmail(user.email);
 
   await registrationFormPage.enterDateOfDemo(
     user.date.month,
@@ -61,36 +43,21 @@ test('Registration Form Test', async ({
     user.date.day
   );
 
-  await registrationFormPage.enterconvinientTimeHH(
-    user.time.hour
-  );
+  await registrationFormPage.enterconvinientTimeHH(user.time.hour);
 
-  await registrationFormPage.enterConvinientTimeMM(
-    user.time.minute
-  );
+  await registrationFormPage.enterConvinientTimeMM(user.time.minute);
 
-  await registrationFormPage.enterMobileNumber(
-    user.mobile
-  );
+  await registrationFormPage.enterMobileNumber(user.mobile);
 
-  await registrationFormPage.enterYourQuery(
-    user.query
-  );
+  await registrationFormPage.enterYourQuery(user.query);
 
-  const exampleValue =
-    await registrationFormPage.getExampleTextValue();
+  const exampleNumber =
+    await registrationFormPage.getExampleTextNumberValue();
 
-  const extractedDigits =
-    exampleValue?.match(/\d+/)?.[0];
-
-  await registrationFormPage.enterExample(
-    extractedDigits ?? ''
-  );
+  await registrationFormPage.enterExample(exampleNumber);
 
   await registrationFormPage.clickSubmitButton();
 
-  await successfulMessagePage.validateSuccessMessage(
-    'Registration Form is Successfully Submitted'
-  );
+  await successfulMessagePage.validateSuccessMessage('Registration Form is Successfully Submitted');
 
 });

@@ -7,20 +7,18 @@ export class SuccessfulMessagePage {
 
     constructor(page: Page) {
         this.page = page;
-        this.successfulMessage =
-            page.locator('[id="messageContainer"]');
+        this.successfulMessage = page.locator('[id="messageContainer"]');
     }
 
     async validateSuccessMessage(expected: string) {
 
-        await expect(this.successfulMessage)
-            .toContainText(expected);
+        await expect(this.successfulMessage).toContainText(expected);
 
-        const actualMessage =
-            await this.successfulMessage.textContent();
+        const actualMessage = await this.successfulMessage.textContent();
 
-        const transactionId =
-            actualMessage?.match(/\d+/)?.[0];
+        console.log(`Success Message: ${actualMessage}`);
+
+        const transactionId = actualMessage?.match(/\d+/)?.[0];
 
         console.log(`Transaction ID: ${transactionId}`);
     }

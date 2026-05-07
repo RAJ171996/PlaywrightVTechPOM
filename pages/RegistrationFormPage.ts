@@ -90,39 +90,24 @@ export class RegistrationFormPage {
     }
 
 
-    async enterDateOfDemo(
-        targetMonth: string,
-        targetYear: string,
-        targetDate: string
-    ) {
+    async enterDateOfDemo(targetMonth: string,targetYear: string,targetDate: string) {
 
         await this.dateOfDemo.click();
 
         for (let i = 0; i < 24; i++) {
 
-            const text =
-                await this.page
-                    .locator('.ui-datepicker-title')
-                    .textContent();
+            const text = await this.page.locator('.ui-datepicker-title').textContent();
 
-            if (
-                text?.includes(targetMonth) &&
-                text?.includes(targetYear)
-            ) {
+            if (text?.includes(targetMonth) && text?.includes(targetYear)) {
                 break;
             }
 
-            await this.page
-                .locator('.ui-icon-circle-triangle-e')
-                .click();
+            await this.page.locator('.ui-icon-circle-triangle-e').click();
         }
 
-        await this.page
-            .locator(`//a[text()="${targetDate}"]`)
-            .click();
+        await this.page.locator(`//a[text()="${targetDate}"]`).click();
     }
-
-
+    
 
     async enterconvinientTimeHH(timeHH: string) {
         await this.convinientTimeHH.selectOption({ label: timeHH });
@@ -140,12 +125,21 @@ export class RegistrationFormPage {
         await this.enterYourQueryField.fill(query);
     }
 
-    async getExampleTextValue() {
-        const exampleText = await this.getExampleText.textContent();
-        console.log(exampleText);
-        return exampleText;
+    async getExampleTextNumberValue() {
 
+        // First get full text
+        const exampleText =
+            await this.getExampleText.textContent();
 
+        console.log('Full Text:', exampleText);
+
+        // Extract number
+        const extractedNumber =
+            exampleText?.match(/\d+/)?.[0] ?? '';
+
+        console.log('Extracted Number:', extractedNumber);
+
+        return extractedNumber;
     }
 
     async enterExample(example: string) {

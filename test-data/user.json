@@ -1,0 +1,26 @@
+{
+  "validUser": {
+    "firstName": "John",
+    "lastName": "Doe",
+    "gender": "Male",
+    "course": "Selenium WebDriver",
+    "streetAddress": "Sector 15",
+    "apartment": "Apt 4B",
+    "city": "Noida",
+    "state": "UP",
+    "postalCode": "201301",
+    "country": "India",
+    "email": "john.doe@example.com",
+    "date": {
+      "month": "June",
+      "year": "2026",
+      "day": "15"
+    },
+    "time": {
+      "hour": "10",
+      "minute": "30"
+    },
+    "mobile": "1234567890",
+    "query": "I have a question about the course."
+  }
+}

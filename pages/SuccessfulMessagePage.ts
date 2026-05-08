@@ -12,6 +12,8 @@ export class SuccessfulMessagePage {
 
     async validateSuccessMessage(expected: string) {
 
+        await this.successfulMessage.waitFor({state: 'visible',timeout: 10000});
+
         await expect(this.successfulMessage).toContainText(expected);
 
         const actualMessage = await this.successfulMessage.textContent();

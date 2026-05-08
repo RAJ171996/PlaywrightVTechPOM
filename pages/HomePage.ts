@@ -20,11 +20,16 @@ export class HomePage {
 
     async navigateToRegistrationForm() {
 
+        await this.demoSiteLink.waitFor({state: 'visible'});
         await this.demoSiteLink.hover({force: true});
 
+        await this.practiceAutomationLink.waitFor({state: 'visible'});
         await this.practiceAutomationLink.hover({force: true});
-
+ 
+        await this.registrationFormLink.waitFor({state: 'visible'});
         await this.registrationFormLink.click({force: true});
+
+        await this.page.getByRole('heading', { name: 'Registration Form' }).waitFor();
     }
 
 }
